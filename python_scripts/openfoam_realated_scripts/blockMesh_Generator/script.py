@@ -7,7 +7,6 @@ from copy import copy as cp
 
 # file name of the geometry
 file = input("Enter Filename with extension : ")
-N = int(input("Parameter : "))
 
 # regular expressions for getting only coordinates from file
 exp1 = re.compile("\s*\w+\s[-+]?\d+\.*\d*\w*[-+]?\d*\s[-+]?\d+\.*\d*\w*[-+]?\d*\s[-+]?\d+\.*\d*\w*[-+]?\d*", re.DOTALL)
@@ -16,7 +15,7 @@ exp2 = re.compile("[-+]?\d+\.*\d*\w*[-+]?\d*")
 fid = open(file,"r")
 
 # reading the first point to get the first set of coordinates that is with geometry
-print("Computing minimum and maximum coordinates ... ")
+print("\nComputing minimum and maximum coordinates ... \n")
 for line in fid:
 
     result1 = exp1.match(line) # filtering to lines that contain coordinates
@@ -83,9 +82,21 @@ Xlen = Xmax - Xmin
 Ylen = Ymax - Ymin
 Zlen = Zmax - Zmin
 
-nx = N
-ny = int(Ylen/Xlen*N)
-nz = int(Zlen/Xlen*N)
+if Xlen == np.min([Xlen,Ylen,Zlen]):
+    N = int(input("No of cells required in X direction : "))
+    nx = N
+    ny = int(Ylen/Xlen*N)
+    nz = int(Zlen/Xlen*N)
+elif Ylen == np.min([Xlen,Ylen,Zlen]):
+    N = int(input("No of cells required in Y direction : "))
+    ny = N
+    nx = int(Xlen/Ylen*N)
+    nz = int(Zlen/Ylen*N)
+else:
+    N = int(input("No of cells required in Z direction : "))
+    nz = N
+    ny = int(Ylen/Zlen*N)
+    nx = int(Xlen/Zlen*N)
 
 print("Done")
 
