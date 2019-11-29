@@ -160,6 +160,14 @@ int main(int argc, char *argv[])
 	  {
 	    phiList.append(phi.internalField()[id]);
 	  }
+	forAll(mesh.boundaryMesh(),patchI)
+	  {
+	    label patchSize = mesh.boundary()[patchI].Cf().size();
+	    for(int i = 0; i < patchSize; i++)
+	      {
+		phiList.append(phi.boundaryField()[patchI][i]);
+	      }
+	  }
 
 	// computing the total flux entering in the boundary
 	scalar Qflux(0);
@@ -169,16 +177,12 @@ int main(int argc, char *argv[])
 	    // getting exact face ID
 	    label faceID = faceZoneList[index];
 
-	    // checking if the face internal or boundary one
-	    if (faceID < mesh.Cf().size()) // it is an internal face
-	      {
-		// getting the phi value of corresponding face
-		scalar flux = phi.internalField()[faceID];
-		if(flux < 0)
-		  Qflux -= flux;
-		else
-		  Qflux += flux;
-	      }
+	    // getting the phi value of corresponding face
+	    scalar flux = phiList[faceID];
+	    if(flux < 0)
+	      Qflux -= flux;
+	    else
+	      Qflux += flux;
 	  }
 
 	Info << nl << "Total flow-rate in the domain: " << cellZoneName
