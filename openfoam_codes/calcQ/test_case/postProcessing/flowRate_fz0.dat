@@ -1,0 +1,5 @@
+"The volume flow information occuring in the cellZone named : cz0, is printed in this file."
+
+Total flow-rate in the domain: cz0, for the time: 145, is = 0.0900292
+
+Total Fluid Change Per Hour (FCPH) in the domain: cz0, for the time: 145, is = 12003.9 per hour.

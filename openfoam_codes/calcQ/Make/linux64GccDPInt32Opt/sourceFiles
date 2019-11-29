@@ -1,0 +1,4 @@
+SOURCE = \
+calcQ.C \
+
+# sources
