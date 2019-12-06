@@ -1,0 +1,17 @@
+# vtk DataFile Version 2.1
+lineSegment
+ASCII
+DATASET POLYDATA
+
+POINTS      4 float
+0.0 0.0 0.0
+1.0 1.0 0.0
+2.0 0.5 0.0
+4.0 0.0 0.0
+
+LINES 1 5
+4
+0
+1
+2
+3
