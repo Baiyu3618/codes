@@ -152,6 +152,7 @@ int main(int argc, char *argv[])
     }
 
   label pcount(1);		// just count variable
+  label totalParticleKilled(0);	// total number of particles killed due to exceding max time step
 
   // reading maximum time step for particle tracking
   label maxTimeStep;
@@ -218,7 +219,10 @@ int main(int argc, char *argv[])
 	    }
 
 	  if(iterCount >= maxTimeStep)
-	    Info << tab << "Particle Killed! .. exceding maximum time step count." << endl;
+	    {
+	      Info << tab << "Particle Killed! .. exceding maximum time step count." << endl;
+	      totalParticleKilled++;
+	    }
 	  else
 	    Info << tab <<"particle dead .. " << endl;
 	  Info << tab <<"Distance traveled : " << distance << " units." << endl;
@@ -276,7 +280,10 @@ int main(int argc, char *argv[])
 	    }
 
 	  if(iterCount >= maxTimeStep)
-	    Info << tab << "Particle Killed! .. exceding maximum time step count." << endl;
+	    {
+	      Info << tab << "Particle Killed! .. exceding maximum time step count." << endl;
+	      totalParticleKilled++;
+	    }
 	  else
 	    Info << tab <<"particle dead .. " << endl;
 	  Info << tab <<"Distance traveled : " << distance << " units." << endl;
@@ -289,6 +296,8 @@ int main(int argc, char *argv[])
 	  pcount++;
 	}
     }
+
+  Info << nl << "Total number of particles killed due to exceeding max time step count = " << totalParticleKilled << endl;
 
   Info << nl << "particle's data : distance & age, are writen to the postProcessing/ directory." << endl;
 
