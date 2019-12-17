@@ -1,0 +1,5 @@
+patchName, flux value
+inlet, -1
+outlet, 0.999999
+walls, 0
+Global continuity value :, -7.1e-07
