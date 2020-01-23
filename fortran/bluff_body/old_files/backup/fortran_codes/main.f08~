@@ -1,0 +1,24 @@
+  ! this is the main file for bluff body simulation
+program main
+
+  use parameters
+
+  implicit none
+
+  ! reading the geometry from file
+  call reader()
+
+  ! performing grid transformations
+  call transformer()
+
+  ! initializing computation variables
+  call initializer()
+
+  ! begining main loop
+  call encoder()
+
+  call decoder()
+
+  call writer()
+  
+end program main

@@ -1,0 +1,4 @@
+# dummy variables in pandas and how its useful in machine learning
+import numpy as np
+import pandas as pd
+from sklearn import linear_model

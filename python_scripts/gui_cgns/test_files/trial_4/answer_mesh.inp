@@ -1,0 +1,21 @@
+/====   PROBLEM IDENTIFICATION             ====/
+TITLe answer_mesh
+USER ramkumar
+/====   GEOMETRY SPECIFICATIONS            ====/
+GRID UNSTructured THREE Dimensional 2560 cells. NODEs = 7840
+CONNectivity HYBrid file = 'answer_mesh.hyb'
+COORdinates  X Y Z  'answer_mesh.xyz'
+LOCAte ID=BOTTOM LIST  'BOTTOM.loc' 40 items.
+LOCAte ID=BOTTOM_BOUNDARY PAIR  'BOTTOM_BOUNDARY.loc' 40 items.
+LOCAte ID=RIGHT LIST  'RIGHT.loc' 40 items.
+LOCAte ID=RIGHT_BOUNDARY PAIR  'RIGHT_BOUNDARY.loc' 40 items.
+LOCAte ID=TOP LIST  'TOP.loc' 40 items.
+LOCAte ID=TOP_BOUNDARY PAIR  'TOP_BOUNDARY.loc' 40 items.
+LOCAte ID=LEFT LIST  'LEFT.loc' 40 items.
+LOCAte ID=LEFT_BOUNDARY PAIR  'LEFT_BOUNDARY.loc' 40 items.
+LOCAte ID=BACK_FACE PAIR  'BACK_FACE.loc' 2560 items.
+LOCAte ID=FRONT_FACE PAIR  'FRONT_FACE.loc' 2560 items.
+END
+
+
+

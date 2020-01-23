@@ -1,0 +1,78 @@
+\documentclass[a4paper]{report}
+
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage[fleqn]{amsmath}
+\usepackage{siunitx}
+\usepackage{titlesec}
+\usepackage{layout}
+\usepackage{comment}
+\usepackage{subfigure}
+\usepackage{cleveref}
+\usepackage{longtable}
+\usepackage{natbib}
+
+
+\title{\textbf{\Huge Lid Driven Cavity - Anupravaha 2}}
+\date{}
+
+\setlength{\headheight}{1cm}
+\setlength{\headsep}{1cm}
+\setlength{\topmargin}{1mm}
+\setlength{\oddsidemargin}{5mm}
+\setlength{\evensidemargin}{-3mm}
+\setlength{\textwidth}{160mm}
+\setlength{\textheight}{225mm}
+
+\def\arraystretch{1.5}
+
+\begin{document}
+
+   \begin{titlepage}   	   
+        
+       \vspace*{3.5cm}
+       \hspace*{3.5cm}\textbf{\Huge Lid-Driven Cavity} 
+       
+        \vspace*{0.5cm}
+         \hspace*{9cm} \textbf{\large $\text{ANUPRAVAHA}_{\text{v2.0}}$}
+                         
+          \vfill
+
+\begin{minipage}{0.5\textwidth}
+		\includegraphics[scale=0.25]{cfdvri_logo.png}
+\end{minipage}
+
+         
+          \vspace*{1cm}
+        
+        \begin{tikzpicture}[yscale=1.0][htb!]
+                    \draw [line width=0.9mm, black] (0,-5) -- (15,-5) node [right] {\SI{}{}};
+        \end{tikzpicture}
+        
+        \vspace*{0.2cm}
+        
+        \textbullet \textbf{\hspace*{0.3cm}CFD Virtual Reality Institute, No. 611 (2nd floor), C Block, AECS Layout Main   \hspace*{1cm}Road, Bangalore - 560 037,  India. \\ \hspace*{0.9cm} Telephone: +91 80 4131 1106}
+           
+    \end{titlepage}
+
+\makeatletter
+
+ 
+\newpage
+\tableofcontents
+\listoffigures
+\listoftables 
+
+\newpage
+
+
+%  \input{ldc.tex}
+
+\renewcommand{\bibname}{References}
+\addcontentsline{toc}{chapter}{References}
+%\bibliographystyle{plain}
+\bibliographystyle{unsrtnat}
+\nocite{*}
+\bibliography{bibliog}
+
+\end{document}

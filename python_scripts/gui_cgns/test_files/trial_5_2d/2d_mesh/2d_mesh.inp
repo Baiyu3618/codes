@@ -1,0 +1,19 @@
+/====   PROBLEM IDENTIFICATION             ====/
+TITLe 2d_mesh
+USER ramkumar
+/====   GEOMETRY SPECIFICATIONS            ====/
+GRID UNSTructured 792 cells. NODEs = 872
+CONNectivity HYBrid file = '2d_mesh.hyb'
+COORdinates  X Y  '2d_mesh.xyz'
+LOCAte ID=BOTTOM LIST  'BOTTOM.loc' 20 items.
+LOCAte ID=BOTTOM_BOUNDARY PAIR  'BOTTOM_BOUNDARY.loc' 20 items.
+LOCAte ID=RIGHT LIST  'RIGHT.loc' 20 items.
+LOCAte ID=RIGHT_BOUNDARY PAIR  'RIGHT_BOUNDARY.loc' 20 items.
+LOCAte ID=TOP LIST  'TOP.loc' 20 items.
+LOCAte ID=TOP_BOUNDARY PAIR  'TOP_BOUNDARY.loc' 20 items.
+LOCAte ID=LEFT LIST  'LEFT.loc' 20 items.
+LOCAte ID=LEFT_BOUNDARY PAIR  'LEFT_BOUNDARY.loc' 20 items.
+END
+
+
+

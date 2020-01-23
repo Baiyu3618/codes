@@ -1,0 +1,112 @@
+
+\chapter{Lid-driven cavity}
+
+\section{Problem statement}
+
+  \paragraph*{}
+Consider a cavity with length $L= 1.0$ m and height $H = 1.0$ m.  The top wall of the cavity moves with a velocity $U = 1.0$ m/s. For  Reynolds number, $Re = 100$, it is required to compare the obtained numerical results with benchmark solution of \cite{Ghia1982}. 
+
+\section{Schematic  Diagram}
+
+\begin{figure}[htb!]
+	\centering
+	\hspace*{2cm}
+     \includegraphics[scale=0.5]{Schematic_P_26p1.eps}
+     \caption{Schematic representation of lid driven cavity.}
+     \label{fig:schematicDgm_LDC}
+\end{figure}
+
+
+\section{Computational Methodology}
+
+   \paragraph*{}
+General purpose CFD solver Anupravaha 2.0 was used to simulate the problem. Pre-processing was performed using Anupravaha pre-processor in which structured meshes can be created for simple geometries. Laminar model was chosen since $Re = 100.$ The energy equation and conjugate heat transfer were turned off as the problem pertains to fluid flow alone. The convergence criterion was given to be $1\times 10^{-9}$ for pressure and velocity. Default values were used for deferred correction factor and over-relaxation factor. The top plate velocity was chosen to be 1.0 m/s so that with appropriate material properties, the $Re = 100$. Computations were performed on a grid size of  $129\times129\times2$. The total number of times steps were taken to be 5000 and the time step size to be 0.001.  The obtained solution, therefore, corresponds to a total simulation time of 5s.
+\vspace*{0.5cm}
+\section*{Material Property}
+     \paragraph*{}
+          Material properties were chosen in such a way that the $Re = 100$.  
+    \begin{table}[htb!]
+	\centering
+	\begin{tabular}[htb!]{||c|c|c||} \hline
+		Sl No. &Parameter & Value \\ \hline
+		1 & Viscosity & 0.01 kg/ms \\
+		2 & Density & 1.0 $\text{kg}/\text{m}^3$ \\ 
+		3 & Thermal conductivity & 0.0 W/mK \\ 
+		4& Specific heat & 0.0 J/kgK \\ \hline
+	\end{tabular}
+\caption{Material properties used in the simulation corresponding to $Re = 100.$}
+\label{tab:MaterialProperties_problemLDC}
+\end{table}
+% \vspace*{-0.5cm}
+\section*{Initial Conditions}
+    %\vspace*{-0.5cm}
+    \begin{table}[htb!]
+	     \centering
+	\begin{tabular}[htb!]{||c|c|c||} \hline
+		Sl No. &Parameter & Value \\ \hline
+		1 & U velocity & 0.0  m/s\\
+		2 & V velocity & 0.0  m/s\\ 
+		3 & W velocity & 0.0 m/s\\ 
+		4& Density & 1.0 $\text{kg}/\text{m}^3$\\ 
+		5 & Pressure & 0.0 Pa \\ \hline
+		\end{tabular}
+	\caption{Initial condition used in the simulations.}
+	\label{tab: Initialcondition_problem LDC}
+ \end{table}
+
+   %\vspace*{-0.5cm}
+\section*{Boundary Conditions}
+    %\vspace*{-0.5cm}
+\begin{longtable}[htb!]{||c|c|c|c|c||} \hline
+	\centering
+%	\begin{tabular}[htb!]{||c|c|c|c|c||} \hline
+		Sl No. &Boundary Name& Parameter & Boundary Type & Value \\ \hline
+		
+		1 &Left, Right \&  Bottom  boundaries & U velocity & Dirichlet & 0.0 m/s \\
+			& 							 & V velocity & Dirichlet & 0.0 m/s\\
+			& 							 & W velocity & Dirichlet & 0.0 m/s\\			\hline	
+		2 & Top boundary & U velocity & Dirichlet & 1.0 m/s \\
+			& 							 & V velocity & Dirichlet & 0.0 m/s\\
+			& 							 & W velocity & Dirichlet & 0.0 m/s\\			\hline				
+	  3   & Front, Back boundary & U velocity & Symmetric & 0.0 m/s \\
+		   & 							 & V velocity & Symmetric & 0.0 m/s\\
+		   & 							 & W velocity & Dirichlet & 0.0 m/s\\			\hline
+%	\end{tabular}
+   \caption{Boundary conditions employed for lid driven cavity problem corresponding to $Re=100$ }
+\end{longtable}
+
+\section{Results}
+   \paragraph*{}
+    \Cref{fig:VelocityContourLDC} represents the velocity contour obtained for the simulation corresponding to the finest mesh size of $129 \times 129 \times 2$.
+   
+   \begin{figure}[htb!]
+	\centering
+	\hspace*{-2.5cm}
+	\includegraphics[scale=0.6]{VelocityContour.png}
+	\caption{Velocity contour for the lid-driven cavity for grid size corresponding to $129 \times 129 \times 2$.}
+	\label{fig:VelocityContourLDC}
+  \end{figure}
+
+  \paragraph*{}
+Comparison of the $U$ velocity and $V$ velocity profiles with Ghia(1982) is depicted in \Cref{fig:FineGraph} respectively. It can be inferred from the \Cref{fig:FineGraph} that for a fine grid of $129\times 129 \times 2$, the obtained numerical results are in close agreement with the results from \cite{Ghia1982}. 
+
+
+   %\begin{figure}[htb!]
+   	  %   \subfigure[]{\includegraphics[scale=0.42]{Coarse_UvsY.pdf} \label{gra:UvsYCoarse}}
+   	  %    \subfigure[]{\includegraphics[scale=0.42]{Coarse_VvsX.pdf} \label{gra:VvsXCoarse}}
+   	     % \caption{Graphs comparing the variation of  \subref{gra:UvsYCoarse} $U$ velocity with distance, $Y$ at $x/L = 0.5$  % \subref{gra:VvsXCoarse} $V$ velocity with distance, $X$ at $y/H = 0.5$ for a coarse grid with results of \cite{Ghia1982}.}
+   	      %\label{fig:CoarseGraph}
+   %\end{figure}
+
+   \begin{figure}[htb!]
+      	\subfigure[]{\includegraphics[scale=0.42]{Fine_UvsY.pdf}\label{gra:UvsYFine}}
+	     \subfigure[]{\includegraphics[scale=0.42]{Fine_VvsX.pdf}\label{gra:VvsXFine}}
+	      \caption{Graphs depicting the variation of  \subref{gra:UvsYFine} $U$ velocity with distance, $Y$ at $x/L = 0.5$  \subref{gra:VvsXFine} $V$ velocity with distance, $X$ at $y/H = 0.5$ for a fine grid with results of \cite{Ghia1982}.}
+	      \label{fig:FineGraph}
+   \end{figure}
+\newpage
+\section{Conclusion}
+The results obtained from the numerical solution using Anupravaha closely matches with the benchmark solution of \cite{Ghia1982}. It can be concluded that the Anupravaha solver accurately captures the physics of lid-driven cavity problem. 
+
+
+

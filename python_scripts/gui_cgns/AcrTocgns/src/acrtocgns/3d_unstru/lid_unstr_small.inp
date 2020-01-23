@@ -1,0 +1,21 @@
+/====   PROBLEM IDENTIFICATION             ====/
+TITLe lid_unstr_small
+USER Pranav_2
+/====   GEOMETRY SPECIFICATIONS            ====/
+GRID UNSTructured THREE Dimensional 70 cells. NODEs = 230
+CONNectivity HYBrid file = 'lid_unstr_small.hyb'
+COORdinates  X Y Z  'lid_unstr_small.xyz'
+LOCAte ID=BOTTOM LIST 1 3 12 33 45 
+LOCAte ID=BOTTOM_BOUNDARY PAIR 1 3 3 3 12 3 33 3 45 3 
+LOCAte ID=RIGHT LIST 2 7 17 29 32 
+LOCAte ID=RIGHT_BOUNDARY PAIR 2 3 7 3 17 3 29 3 32 3 
+LOCAte ID=TOP LIST 6 10 16 22 41 
+LOCAte ID=TOP_BOUNDARY PAIR 6 3 10 3 16 3 22 3 41 3 
+LOCAte ID=LEFT LIST 9 15 23 46 65 
+LOCAte ID=LEFT_BOUNDARY PAIR 9 3 15 3 23 3 46 3 65 3 
+LOCAte ID=BACK_FACE PAIR  'BACK_FACE.loc' 70 items.
+LOCAte ID=FRONT_FACE PAIR  'FRONT_FACE.loc' 70 items.
+END
+
+
+

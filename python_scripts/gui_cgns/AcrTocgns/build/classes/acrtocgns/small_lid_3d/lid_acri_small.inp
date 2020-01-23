@@ -1,0 +1,27 @@
+/====   PROBLEM IDENTIFICATION             ====/
+TITLe lid_acri_small
+USER Pranav_2
+/====   GEOMETRY SPECIFICATIONS            ====/
+GRID  7 by 7 by 3
+COORdinates  X 
+     0.0      0.2      0.4 0.6000000000000001      0.8      1.0 
+COORdinates  Y 
+     0.0 0.19999999999999996      0.4 0.6000000000000001      0.8      1.0 
+COORdinates  Z 
+     0.0    0.001 
+/LOCAte ID=LEFT  from (2,2,2) to (2,6,2)
+LOCAte ID=LEFT_BOUNDARY PAIR 1 1 6 1 11 1 16 1 21 1 
+/LOCAte ID=RIGHT  from (6,2,2) to (6,6,2)
+LOCAte ID=RIGHT_BOUNDARY PAIR 5 2 10 2 15 2 20 2 25 2 
+/LOCAte ID=BOTTOM  from (2,2,2) to (6,2,2)
+LOCAte ID=BOTTOM_BOUNDARY PAIR 1 3 2 3 3 3 4 3 5 3 
+/LOCAte ID=TOP  from (2,6,2) to (6,6,2)
+LOCAte ID=TOP_BOUNDARY PAIR 21 4 22 4 23 4 24 4 25 4 
+/LOCAte ID=BACK  from (2,2,2) to (6,6,2)
+/LOCAte ID=FRONT  from (2,2,2) to (6,6,2)
+LOCAte ID=FRONT_BOUNDARY PAIR  'FRONT_BOUNDARY.loc' 25 items.
+LOCAte ID=BACK_BOUNDARY PAIR  'BACK_BOUNDARY.loc' 25 items.
+END
+
+
+

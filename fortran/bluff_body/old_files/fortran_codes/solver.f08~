@@ -1,0 +1,128 @@
+  ! this script contains the solver and encoder subroutines
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! this is the encoder subroutine used in main file !
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+subroutine encoder(U1b,U2b,U3b,U4b,F1b,F2b,F3b,F4b,G1b,G2b,G3b,G4b)
+
+  use parameters
+
+  implicit none
+
+  ! declaring local variables
+  real(kind=rkd),dimension(nx,ny),intent(out) :: F1b,F2b,F3b,F4b,G1b,G2b,G3b,G4b
+  real(kind=rkd),dimension(nx,ny),intent(in) :: U1b,U2b,U3b,U4b
+
+  ! encoding the x derivative terms
+  F1b = U2b
+  F2b = (3.0-gamma)/2.0*U2b**2/U1b+(gamma-1.0)*(U4b-U3b**2/2.0/U1b)
+  F3b = U2b*U3b/U1b
+  F4b = gamma*U4b*U2b/U1b-(gamma-1.0)/2.0*U2b*(U2b**2+U3b**2)/U1b**2
+
+  ! encoding the y derivative terms
+  G1b = U3b
+  G2b = U2b*U2b/U1b
+  G3b = (3.0-gamma)/2.0*U3b**2/U1b+(gamma-1.0)*(U4b-U2b**2/2.0/U1b)
+  G4b = gamma*U4b*U3b/U1b-(gamma-1.0)/2.0*U3b*(U2b**2+U3b**2)/U1b**2
+  
+end subroutine encoder
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! this is the solver subroutine for computation !
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+subroutine solver()
+
+  use parameters
+
+  implicit none
+
+  ! declaring local variables
+  real(kind=rkd),dimension(nx,ny) :: u1b1,u2b1,u3b1,u4b1
+  real(kind=rkd),dimension(nx,ny) :: u1b2,u2b2,u3b2,u4b2
+  real(kind=rkd),dimension(nx,ny) :: u1b3,u2b3,u3b3,u4b3
+  real(kind=rkd),dimension(nx,ny) :: u1b4,u2b4,u3b4,u4b4
+  real(kind=rkd),dimension(nx,ny) :: f1b,f2b,f3b,f4b
+  real(kind=rkd),dimension(nx,ny) :: g1b,g2b,g3b,g4b
+  ! these  Ub's are obtained by dt*dU/dt obtained from rk4 steps, hence directly added to U's
+
+  ! 1st step in rk4 method
+  f1b = f1; f2b = f2; f3b = f3; f4b = f4
+  g1b = g1; g2b = g2; g3b = g3; g4b = g4
+
+  call solve_eqn(f1b,g1b,u1b1)
+  call solve_eqn(f2b,g2b,u2b1)
+  call solve_eqn(f3b,g3b,u3b1)
+  call solve_eqn(f4b,g4b,u4b1)  !solved 1st step rk4 for all eqns
+
+  ! encoding the variables for 2nd step
+  call encoder(U1+0.5*U1b1,U2+0.5*U2b1,U3+0.5*U3b1,U4+0.5*U4b1,f1b,f2b,f3b,f4b,g1b,g2b,g3b,g4b)
+
+  ! 2nd step in rk4
+  call solve_eqn(f1b,g1b,u1b2)
+  call solve_eqn(f2b,g2b,u2b2)
+  call solve_eqn(f3b,g3b,u3b2)
+  call solve_eqn(f4b,g4b,u4b2)  !solved 2nd step rk4 for all eqns
+
+  ! encoding the variables for 3rd step
+  call encoder(U1+0.5*U1b2,U2+0.5*U2b2,U3+0.5*U3b2,U4+0.5*U4b2,f1b,f2b,f3b,f4b,g1b,g2b,g3b,g4b)
+
+  ! 3rd step in rk4
+  call solve_eqn(f1b,g1b,u1b3)
+  call solve_eqn(f2b,g2b,u2b3)
+  call solve_eqn(f3b,g3b,u3b3)
+  call solve_eqn(f4b,g4b,u4b3)  !solved 3rd step rk4 for all eqns
+
+  ! encoding the variables for 4th step
+  call encoder(U1+U1b3,U2+U2b3,U3+U3b3,U4+U4b3,f1b,f2b,f3b,f4b,g1b,g2b,g3b,g4b)
+
+  ! 4th step in rk4
+  call solve_eqn(f1b,g1b,u1b4)
+  call solve_eqn(f2b,g2b,u2b4)
+  call solve_eqn(f3b,g3b,u3b4)
+  call solve_eqn(f4b,g4b,u4b4)  !solved 1st step rk4 for all eqns
+
+  ! combining step
+  U1 = U1 + 1.0/6.0*(u1b1 + 2.0*u1b2 + 2.0*u1b3 + u1b4)
+  U2 = U2 + 1.0/6.0*(u2b1 + 2.0*u2b2 + 2.0*u2b3 + u2b4)
+  U3 = U3 + 1.0/6.0*(u3b1 + 2.0*u3b2 + 2.0*u3b3 + u3b4)
+  U4 = U4 + 1.0/6.0*(u4b1 + 2.0*u4b2 + 2.0*u4b3 + u4b4)
+
+end subroutine solver
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! this is the solve_eqn subroutine that gives solved !
+!   form of U's used in solver subroutine            !
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+subroutine solve_eqn(fs,gs,us)
+
+  use parameters
+
+  implicit none
+
+  ! declaring local variables
+  real(kind=rkd),dimension(nx,ny),intent(in) :: fs,gs
+  real(kind=rkd),dimension(nx,ny),intent(out) :: us
+  real(kind=rkd) :: dfsx,dgsy,dust
+
+  us = 0.0
+
+  ! begining the solution
+  do i = 2,nx-1
+     do j = 2,ny-1
+        ! dfsx = 1.0/Jac(i,j)*(dyn(i,j)*(fs(i+1,j)-fs(i-1,j))/dE/2.0 &
+        !      - dye(i,j)*(fs(i,j+1)-fs(i,j-1))/dN/2.0) !transforming derivatives
+        ! dgsy = 1.0/Jac(i,j)*(dxe(i,j)*(gs(i,j+1)-gs(i,j-1))/dN/2.0 &
+        !      - dxn(i,j)*(gs(i+1,j)-gs(i-1,j))/dE/2.0)
+        dfsx = (fs(i+1,j)-fs(i-1,j))/dE/2.0
+        dgsy = (gs(i,j+1)-gs(i,j-1))/dN/2.0
+        dust = -(dfsx + dgsy)   !final assembled equation
+        us(i,j) = dt*dust       !computing actual values from derivatives
+     end do
+  end do
+
+  ! extrapolating the values
+  ! us(:,ny) = 2*us(:,ny-1) - us(:,ny-2)
+  ! us(:,1) = 2*us(:,2) - us(:,3)
+  us(nx,:) = 2*us(nx-1,:) - us(nx-2,:)
+
+end subroutine solve_eqn

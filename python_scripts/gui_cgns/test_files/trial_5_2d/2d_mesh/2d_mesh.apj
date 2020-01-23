@@ -1,0 +1,13 @@
+#Properties for project 2d_mesh
+#Sun Sep 09 09:53:31 IST 2018
+project.name=2d_mesh
+project.GridFile.2=/home/ramkumar/Desktop/Working_Directory/gui_cgns/test_files/trial_5_2d/2d_mesh/2d_mesh.hyb
+project.DatasetType=4
+project.GridFile.1=/home/ramkumar/Desktop/Working_Directory/gui_cgns/test_files/trial_5_2d/2d_mesh/2d_mesh.xyz
+project.CoordinateSystem=Cartesian
+project.dimension=2
+project.commands_file=/home/ramkumar/Desktop/Working_Directory/gui_cgns/test_files/trial_5_2d/2d_mesh/2d_mesh.inp
+project.dir=/home/ramkumar/Desktop/Working_Directory/gui_cgns/test_files/trial_5_2d/2d_mesh/
+project.prefix=/home/ramkumar/Desktop/Working_Directory/gui_cgns/test_files/trial_5_2d/2d_mesh/2d_mesh
+project.description=Project 2d_mesh generated using the wizard on 9\:53\:19 AM IST ; September 9, 2018
+project.geometry_properties_file=/home/ramkumar/Desktop/Working_Directory/gui_cgns/test_files/trial_5_2d/2d_mesh/2d_mesh.agm

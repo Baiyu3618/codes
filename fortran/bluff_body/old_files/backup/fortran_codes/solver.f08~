@@ -1,0 +1,21 @@
+  ! this script contains the solver and encoder subroutines
+
+subroutine encoder()
+
+  use parameters
+
+  implicit none
+
+  ! encoding the x derivative terms
+  F1 = U2
+  F2 = (3.0-gamma)/2.0*U2**2/U1+(gamma-1.0)*(U4-U3**2/2.0/U1)
+  F3 = U2*U3/U1
+  F4 = gamma*U4*U2/U1-(gamma-1.0)/2.0*U2*(U2**2+U3**2)/U1**2
+
+  ! encoding the y derivative terms
+  G1 = U3
+  G2 = U2*U2/U1
+  G3 = (3.0-gamma)/2.0*U3**2/U1+(gamma-1.0)*(U4-U2**2/2.0/U1)
+  G4 = gamma*U4*U3/U1-(gamma-1.0)/2.0*U3*(U2**2+U3**2)/U1**2
+  
+end subroutine encoder

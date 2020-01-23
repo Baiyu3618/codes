@@ -1,0 +1,20 @@
+@article{Anderson,
+title	= {Computational Fluid Dynamics, basics with applications},
+author	= {John D. Anderson},
+publisher	= {Elsevier Science},
+journal	= {Journal of Computational Physics},
+issnp	= {0021-9991},
+issne	= {1090-2716},
+year	= {1982},
+volume	= {48},
+issue	= {3},
+}
+
+@manual{Anupravaha,
+	ALTauthor = {Mark A. Finlayson},
+	title = {Development of a General Purpose CFD Solver Over a Hybrid Unstructured Grid - Anupravaha User’s Guide},
+	date = {April 2016},
+	OPTlanguage = {English},
+	organization = {IIT-G},
+	pagetotal = {157},
+}

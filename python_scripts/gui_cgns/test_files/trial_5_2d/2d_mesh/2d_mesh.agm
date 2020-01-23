@@ -1,0 +1,4 @@
+#Geometry Settings
+#Sun Sep 09 09:53:58 IST 2018
+Geometry.Scale=1.0;1.0;1.0
+Camera.Settings=\:Position;0.0;0.0;5.915328025817871\:FocalPoint;0.0;0.0;0.0\:ViewUp;0.0;1.0;0.0\:ClippingRange;0.05277916867529369;21.111667470117474;\:WindowCenter;0.0;0.0\:ObliqueAngles;45.0;90.0\:ViewAngle;30.0\:ParallelScale;1.6970562934875488\:ProjectionType;0\:Distance;5.915328025817871

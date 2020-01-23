@@ -1,0 +1,21 @@
+/====   PROBLEM IDENTIFICATION             ====/
+TITLe 0p001X400
+USER code
+/====   GEOMETRY SPECIFICATIONS            ====/
+GRID UNSTructured THREE Dimensional 698 cells. NODEs = 2232
+CONNectivity HYBrid file = '0p001X400.hyb'
+COORdinates  X Y Z  '0p001X400.xyz'
+LOCAte ID=START LIST  'START.loc' 21 items.
+LOCAte ID=START_BOUNDARY PAIR  'START_BOUNDARY.loc' 21 items.
+LOCAte ID=END LIST  'END.loc' 21 items.
+LOCAte ID=END_BOUNDARY PAIR  'END_BOUNDARY.loc' 21 items.
+LOCAte ID=INNER LIST  'INNER.loc' 32 items.
+LOCAte ID=INNER_BOUNDARY PAIR  'INNER_BOUNDARY.loc' 32 items.
+LOCAte ID=OUTER LIST  'OUTER.loc' 64 items.
+LOCAte ID=OUTER_BOUNDARY PAIR  'OUTER_BOUNDARY.loc' 64 items.
+LOCAte ID=BACK_FACE PAIR  'BACK_FACE.loc' 698 items.
+LOCAte ID=FRONT_FACE PAIR  'FRONT_FACE.loc' 698 items.
+END
+
+
+

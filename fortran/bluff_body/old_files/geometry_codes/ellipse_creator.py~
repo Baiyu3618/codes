@@ -1,0 +1,10 @@
+# this is the ellipse bluff body grid generator script
+# developed by ramkumar
+
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+from copy import copy as cp
+
+# geometric parameters
+a1 =

@@ -1,0 +1,14 @@
+https://becominghuman.ai/only-numpy-implementing-convolutional-neural-network-using-numpy-deriving-forward-feed-and-back-458a5250d6e4
+
+https://wiseodd.github.io/techblog/2016/07/16/convnet-conv-layer/
+
+https://towardsdatascience.com/only-numpy-understanding-back-propagation-for-transpose-convolution-in-multi-layer-cnn-with-c0a07d191981
+
+https://gluon.mxnet.io/chapter04_convolutional-neural-networks/cnn-scratch.html
+
+http://chris-chris.ai/2017/11/26/conv-in-numpy/
+
+http://cs231n.github.io/convolutional-networks/#conv
+
+
+https://www.analyticsvidhya.com/learning-path-learn-machine-learning/

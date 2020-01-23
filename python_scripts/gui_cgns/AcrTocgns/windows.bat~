@@ -1,0 +1,9 @@
+echo off
+pushd dist
+set dType="unstructured"
+set loc= "/home/ramkumar/Desktop/Working_Directory/gui_cgns/trial_files/trial.loc"
+set hyb= "/home/ramkumar/Desktop/Working_Directory/gui_cgns/trial_files/trial.hyb"
+set loc= "/home/ramkumar/Desktop/Working_Directory/gui_cgns/trial_files/trial.loc"
+
+C:/jdk1.8.0/bin/java.exe -Djava.library.path=../src/;lib/* -jar AcrTocgns.jar %dType% %xyz% %hyb% %loc%
+popd
