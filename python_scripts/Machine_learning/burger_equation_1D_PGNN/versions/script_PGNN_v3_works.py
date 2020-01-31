@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
 
 # training parameters definition
-n_epoch = 100
+n_epoch = 100000
 learning_rate = 0.01
 
 # graph definition phase--------------------------------------------------------
