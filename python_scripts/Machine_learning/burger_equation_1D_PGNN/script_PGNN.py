@@ -17,8 +17,28 @@ import matplotlib.pyplot as plt
 
 tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
 
+# saving weights and biases layer by layer function
+def weights_saver(gv):
+    # number of layers
+    numLayers = int(len(gv)/2)        # weights + biases will be present
+
+    count = 0
+    for layer in range(numLayers):
+        # layer shape
+        r,c = gv[count].shape
+        # weight layer
+        fileName = str(layer+1)+"_layer_weights_"+str(r)+"X"+str(c)+".txt"
+        np.savetxt(fileName, gv[count])
+        count += 1
+        # bias layer
+        fileName = str(layer+1)+"_layer_biass_"+str(c)+".txt"
+        np.savetxt(fileName, gv[count])
+        count += 1
+    print("weights saved..")
+
+
 # training parameters definition
-n_epoch = 100
+n_epoch = 10
 learning_rate = 0.01
 
 # graph definition phase--------------------------------------------------------
@@ -95,7 +115,12 @@ with tf.Session() as sess:
 
     # saver.restore(sess, "./model.ckpt")
     U_pred = output.eval(feed_dict = {x:X_predict[:,0:51], t:X_predict[:,51].reshape(1,1), Y:ydata})
+
+    gv = sess.run(tf.global_variables())
 #
+
+# saving model weights and biases
+weights_saver(gv)
 
 # prediction error computation
 error_pred = np.mean((y_act - U_pred)**2) * 100
